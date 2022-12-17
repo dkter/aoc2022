@@ -208,35 +208,35 @@ def part2():
 
         paths_visited.add(path)
 
-        you_key = (current_minute, path[-1])
-        elephant_key = (elephant_minute, elephant_path[-1])
-        if (
-            you_key in best_at_minute_and_place
-            and best_at_minute_and_place[you_key] > pressure
-            and elephant_key in best_at_minute_and_place
-            and best_at_minute_and_place[elephant_key] > pressure
-        ):
-            continue
+        # you_key = (current_minute, path[-1])
+        # elephant_key = (elephant_minute, elephant_path[-1])
+        # if (
+        #     you_key in best_at_minute_and_place
+        #     and best_at_minute_and_place[you_key] > pressure
+        #     and elephant_key in best_at_minute_and_place
+        #     and best_at_minute_and_place[elephant_key] > pressure
+        # ):
+        #     continue
 
-        # go back and update best_at_minute_and_place
-        historic_pressure = pressure
-        for tunnel, timestamp in zip(reversed(path), reversed(timestamps)):
-            key = timestamp, tunnel
-            if (
-                key not in best_at_minute_and_place or
-                best_at_minute_and_place[key] < historic_pressure
-            ):
-                best_at_minute_and_place[key] = historic_pressure
-            #historic_pressure -= (26 - timestamp) * flow_rates[tunnel]
-        historic_pressure = pressure
-        for tunnel, timestamp in zip(reversed(elephant_path), reversed(elephant_timestamps)):
-            key = timestamp, tunnel
-            if (
-                key not in best_at_minute_and_place or
-                best_at_minute_and_place[key] < historic_pressure
-            ):
-                best_at_minute_and_place[key] = historic_pressure
-            #historic_pressure -= (26 - timestamp) * flow_rates[tunnel]
+        # # go back and update best_at_minute_and_place
+        # historic_pressure = pressure
+        # for tunnel, timestamp in zip(reversed(path), reversed(timestamps)):
+        #     key = timestamp, tunnel
+        #     if (
+        #         key not in best_at_minute_and_place or
+        #         best_at_minute_and_place[key] < historic_pressure
+        #     ):
+        #         best_at_minute_and_place[key] = historic_pressure
+        #     #historic_pressure -= (26 - timestamp) * flow_rates[tunnel]
+        # historic_pressure = pressure
+        # for tunnel, timestamp in zip(reversed(elephant_path), reversed(elephant_timestamps)):
+        #     key = timestamp, tunnel
+        #     if (
+        #         key not in best_at_minute_and_place or
+        #         best_at_minute_and_place[key] < historic_pressure
+        #     ):
+        #         best_at_minute_and_place[key] = historic_pressure
+        #     #historic_pressure -= (26 - timestamp) * flow_rates[tunnel]
 
 
         if pressure > best_pressure:
