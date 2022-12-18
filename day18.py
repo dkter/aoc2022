@@ -49,33 +49,6 @@ pocket_spaces = set()
 for cube in cubes:
     for side in adjacent_sides(*cube):
         if side not in cubeset and side not in pocket_spaces:
-            # cubes_surrounding = {cube}
-            # for cube2 in cubes:
-            #     if cube2 != cube and adjacent(*side, *cube2):
-            #         cubes_surrounding.add(cube2)
-            # if len(cubes_surrounding) == 6:
-            #     # print(side, cube)
-            #     cubes_surrounding_pockets |= cubes_surrounding
-            #     n_sides -= 1
-
-            # make sure this cube is inside something by checking in all directions
-            xm = xp = ym = yp = zm = zp = False
-            for x, y, z in cubes:
-                if x < side[0] and y == side[1] and z == side[2]:
-                    xm = True
-                elif x > side[0] and y == side[1] and z == side[2]:
-                    xp = True
-                if y < side[1] and x == side[0] and z == side[2]:
-                    ym = True
-                elif y > side[1] and x == side[0] and z == side[2]:
-                    yp = True
-                if z < side[2] and x == side[0] and y == side[1]:
-                    zm = True
-                elif z > side[2] and x == side[0] and y == side[1]:
-                    zp = True
-            if not all((xm, xp, ym, yp, zm, zp)):
-                continue
-
             queue = deque([side])
             cubes_surrounding = []
             spaces = {side}
